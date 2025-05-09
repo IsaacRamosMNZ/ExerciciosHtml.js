@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro e Senhas Salvas</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6a1b9a, #8e24aa); /* Gradiente suave */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .container {
+      background-color: rgba(52, 152, 219, 0.8);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+      width: 350px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: none;
+    }
+
+    button {
+      background-color: #8e24aa;
+      color: #fff;
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #6a1b9a;
+    }
+
+    .voltar-btn {
+      background-color: #e74c3c;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .voltar-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .senhas-salvas {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #f1c40f;
+    }
+
+    .senha-item {
+      margin: 5px;
+      font-size: 14px;
+    }
+
+    .cadastro-msg {
+      font-size: 16px;
+      margin-top: 10px;
+      color: #2ecc71;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Cadastro e Senhas Salvas</h1>
+
+    <!-- Formulário de Cadastro -->
+    <input type="text" id="nome" placeholder="Nome" />
+    <input type="email" id="email" placeholder="E-mail" />
+    <input type="password" id="senha" placeholder="Senha" />
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <!-- Mensagem de Cadastro -->
+    <div class="cadastro-msg" id="mensagem-cadastro"></div>
+
+    <!-- Exibição das Senhas Salvas -->
+    <div class="senhas-salvas" id="senhas-salvas"></div>
+
+    <!-- Voltar para o index -->
+    <button class="voltar-btn" onclick="window.location.href='index.html'">Voltar</button>
+  </div>
+
+  <script>
+    // Função para validar e cadastrar
+    function cadastrar() {
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const mensagemCadastro = document.getElementById('mensagem-cadastro');
+
+      // Verificar se os campos estão preenchidos
+      if (nome === '' || email === '' || senha === '') {
+        mensagemCadastro.textContent = 'Por favor, preencha todos os campos!';
+        mensagemCadastro.style.color = '#e74c3c'; // Vermelho
+        return;
+      }
+
+      // Verificar se o e-mail é válido
+      const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!regexEmail.test(email)) {
+        mensagemCadastro.textContent = 'E-mail inválido!';
+        mensagemCadastro.style.color = '#e74c3c'; // Vermelho
+        return;
+      }
+
+      // Criar o objeto usuário
+      const usuario = {
+        nome: nome,
+        email: email,
+        senha: senha
+      };
+
+      // Salvar o cadastro no localStorage
+      localStorage.setItem('usuario', JSON.stringify(usuario));
+
+      mensagemCadastro.textContent = 'Cadastro realizado com sucesso!';
+      mensagemCadastro.style.color = '#2ecc71'; // Verde
+
+      // Exibir as senhas salvas
+      exibirSenhasSalvas();
+    }
+
+    // Função para exibir as senhas salvas
+    function exibirSenhasSalvas() {
+      const senhasSalvas = JSON.parse(localStorage.getItem('senhas')) || [];
+
+      // Limpar as senhas salvas da tela
+      const divSenhas = document.getElementById('senhas-salvas');
+      divSenhas.innerHTML = '';
+
+      if (senhasSalvas.length === 0) {
+       
+        return;
+      }
+
+      // Exibir as senhas
+      senhasSalvas.forEach(senha => {
+        const senhaItem = document.createElement('div');
+        senhaItem.classList.add('senha-item');
+        senhaItem.textContent = senha;
+        divSenhas.appendChild(senhaItem);
+      });
+    }
+
+    // Salvar a senha gerada
+    function salvarSenha(senha) {
+      const senhasSalvas = JSON.parse(localStorage.getItem('senhas')) || [];
+      senhasSalvas.push(senha);
+      localStorage.setItem('senhas', JSON.stringify(senhasSalvas));
+    }
+
+    // Quando a página carregar, exibir as senhas salvas
+    window.onload = function() {
+      exibirSenhasSalvas();
+    };
+
+  </script>
+
+</body>
+</html>

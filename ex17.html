@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificador de Número Primo</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6a1b9a, #8e24aa); /* Gradiente suave */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .container {
+      background-color: rgba(52, 152, 219, 0.8);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+      width: 350px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border: none;
+      text-align: center;
+    }
+
+    button {
+      background-color: #8e24aa;
+      color: #fff;
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #6a1b9a;
+    }
+
+    .resultado {
+      font-size: 18px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .voltar-btn {
+      background-color: #e74c3c;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .voltar-btn:hover {
+      background-color: #c0392b;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Verificador de Número Primo</h1>
+    <input type="number" id="numero" placeholder="Digite um número" />
+    <button onclick="verificarPrimo()">Verificar</button>
+
+    <div class="resultado">
+      <p id="resultado"></p>
+    </div>
+
+    <button class="voltar-btn" onclick="window.location.href='index.html'">Voltar</button>
+  </div>
+
+  <script>
+    function verificarPrimo() {
+      const numero = parseInt(document.getElementById('numero').value);
+
+      // Verifica se o número é válido
+      if (isNaN(numero) || numero <= 1) {
+        document.getElementById('resultado').textContent = 'Por favor, insira um número válido maior que 1.';
+        return;
+      }
+
+      // Função para verificar se é primo
+      let primo = true;
+      for (let i = 2; i <= Math.sqrt(numero); i++) {
+        if (numero % i === 0) {
+          primo = false;
+          break;
+        }
+      }
+
+      // Exibe o resultado
+      if (primo) {
+        document.getElementById('resultado').textContent = `O número ${numero} é primo!`;
+      } else {
+        document.getElementById('resultado').textContent = `O número ${numero} não é primo.`;
+      }
+    }
+  </script>
+
+</body>
+</html>

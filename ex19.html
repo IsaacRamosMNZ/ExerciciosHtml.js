@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinhação</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6a1b9a, #8e24aa); /* Gradiente suave */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .container {
+      background-color: rgba(52, 152, 219, 0.8);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+      width: 350px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: none;
+    }
+
+    button {
+      background-color: #8e24aa;
+      color: #fff;
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #6a1b9a;
+    }
+
+    .voltar-btn {
+      background-color: #e74c3c;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .voltar-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .dicas {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #f1c40f;
+    }
+
+    .mensagem {
+      font-size: 16px;
+      color: #2ecc71;
+      margin-top: 10px;
+    }
+
+    .erro {
+      font-size: 16px;
+      color: #e74c3c;
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Jogo de Adivinhação</h1>
+
+    <input type="number" id="palpite" placeholder="Digite seu palpite (1-100)" min="1" max="100" />
+    <button onclick="adivinhar()">Adivinhar</button>
+
+    <div class="resultado" id="resultado"></div>
+    <div class="dicas" id="dicas"></div>
+    <div class="mensagem" id="mensagem-sucesso"></div>
+    <div class="erro" id="mensagem-erro"></div>
+
+    <!-- Voltar para o index -->
+    <button class="voltar-btn" onclick="window.location.href='index.html'">Voltar</button>
+  </div>
+
+  <script>
+    // Gerar o número aleatório entre 1 e 100
+    const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+    let tentativas = 0;
+
+    // Função para verificar o palpite
+    function adivinhar() {
+      const palpite = parseInt(document.getElementById('palpite').value);
+      const resultado = document.getElementById('resultado');
+      const dicas = document.getElementById('dicas');
+      const mensagemSucesso = document.getElementById('mensagem-sucesso');
+      const mensagemErro = document.getElementById('mensagem-erro');
+      
+      // Limpar mensagens de erro ou sucesso anteriores
+      mensagemErro.textContent = '';
+      mensagemSucesso.textContent = '';
+      
+      // Verificar se o palpite é um número válido
+      if (isNaN(palpite) || palpite < 1 || palpite > 100) {
+        mensagemErro.textContent = 'Por favor, digite um número entre 1 e 100.';
+        return;
+      }
+
+      tentativas++;
+
+      // Verificar o palpite
+      if (palpite === numeroAleatorio) {
+        resultado.textContent = `Parabéns! Você acertou o número em ${tentativas} tentativa(s).`;
+        dicas.textContent = '';
+        mensagemSucesso.textContent = 'Você venceu!';
+      } else if (palpite < numeroAleatorio) {
+        resultado.textContent = 'Tente um número maior.';
+        dicas.textContent = `Dica: O número é maior que ${palpite}.`;
+      } else {
+        resultado.textContent = 'Tente um número menor.';
+        dicas.textContent = `Dica: O número é menor que ${palpite}.`;
+      }
+    }
+  </script>
+
+</body>
+</html>

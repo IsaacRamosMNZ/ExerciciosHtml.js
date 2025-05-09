@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enquete Interativa</title>
+  <style>
+    /* Estilo geral */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f0f4f7; /* Cor de fundo suave */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      color: #333;
+      flex-direction: column;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    h1 {
+      color: #4A90E2;
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Botões de votação */
+    .opcao-btn {
+      background-color: #4A90E2;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      margin: 10px 0;
+      transition: background-color 0.3s;
+    }
+
+    .opcao-btn:hover {
+      background-color: #357ABD;
+    }
+
+    /* Estilo das barras de porcentagem */
+    .barra-container {
+      width: 100%;
+      height: 30px;
+      background-color: #ddd;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .barra {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+
+    .resultado {
+      font-size: 18px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .voltar-btn {
+      background-color: #e74c3c;
+      font-size: 16px;
+      margin-top: 20px;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .voltar-btn:hover {
+      background-color: #c0392b;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Qual sua cor favorita?</h1>
+    <button class="opcao-btn" onclick="votar(0)">Azul</button>
+    <button class="opcao-btn" onclick="votar(1)">Roxo</button>
+    <button class="opcao-btn" onclick="votar(2)">Verde</button>
+
+    <div id="resultados">
+      <div class="resultado">Total de Votos: <span id="total-votos">0</span></div>
+
+      <div class="barra-container">
+        <div id="barra-0" class="barra" style="width: 0%; background-color: #4A90E2;"></div>
+      </div>
+      <div class="resultado">Azul: <span id="porcentagem-0">0%</span> (<span id="votos-0">0</span> votos)</div>
+
+      <div class="barra-container">
+        <div id="barra-1" class="barra" style="width: 0%; background-color: #6A1B9A;"></div>
+      </div>
+      <div class="resultado">Roxo: <span id="porcentagem-1">0%</span> (<span id="votos-1">0</span> votos)</div>
+
+      <div class="barra-container">
+        <div id="barra-2" class="barra" style="width: 0%; background-color: #2ECC71;"></div>
+      </div>
+      <div class="resultado">Verde: <span id="porcentagem-2">0%</span> (<span id="votos-2">0</span> votos)</div>
+    </div>
+
+    <button class="voltar-btn" onclick="window.location.href='index.html'">Voltar</button>
+  </div>
+
+  <script>
+    // Inicializando os votos
+    let votos = [0, 0, 0];
+    let totalVotos = 0;
+
+    // Função para registrar os votos
+    function votar(opcao) {
+      votos[opcao]++;
+      totalVotos++;
+
+      // Atualizando o total de votos
+      document.getElementById("total-votos").textContent = totalVotos;
+
+      // Atualizando os votos individuais
+      document.getElementById("votos-" + opcao).textContent = votos[opcao];
+
+      // Calculando as porcentagens e atualizando
+      for (let i = 0; i < votos.length; i++) {
+        let porcentagem = (votos[i] / totalVotos) * 100;
+        document.getElementById("porcentagem-" + i).textContent = porcentagem.toFixed(2) + "%";
+        
+        // Atualizando a largura da barra de progresso
+        let barra = document.getElementById("barra-" + i);
+        barra.style.width = porcentagem.toFixed(2) + "%";
+      }
+    }
+  </script>
+
+</body>
+</html>

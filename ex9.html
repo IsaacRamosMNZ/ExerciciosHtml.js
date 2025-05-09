@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semáforo Interativo</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #2980b9, #8e44ad);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 105px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      width: 300px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .semaforo {
+      width: 100px;
+      height: 300px;
+      background-color: #333;
+      border-radius: 30px;
+      margin: 20px auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .luz {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      transition: background-color 0.5s ease;
+    }
+
+    .red {
+      background-color: #e74c3c;
+    }
+
+    .yellow {
+      background-color: #f39c12;
+    }
+
+    .green {
+      background-color: #2ecc71;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .button-container button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 80px;
+    }
+
+    .button-container button:hover {
+      background-color: #34495e;
+    }
+
+    .button-container .red-btn {
+      background-color: #e74c3c;
+    }
+
+    .button-container .yellow-btn {
+      background-color: #f39c12;
+    }
+
+    .button-container .green-btn {
+      background-color: #2ecc71;
+    }
+
+    .voltar {
+      margin-top: 20px;
+      background-color: #8e44ad;
+      font-size: 14px;
+    }
+
+    .voltar:hover {
+      background-color: #732d91;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Semáforo Interativo</h1>
+    <div class="semaforo" id="semaforo">
+      <div id="redLight" class="luz red"></div>
+      <div id="yellowLight" class="luz yellow"></div>
+      <div id="greenLight" class="luz green"></div>
+    </div>
+
+    <div class="button-container">
+      <button class="red-btn" onclick="mudarCor('red')">Vermelho</button>
+      <button class="yellow-btn" onclick="mudarCor('yellow')">Amarelo</button>
+      <button class="green-btn" onclick="mudarCor('green')">Verde</button>
+    </div>
+
+    <br />
+    <button class="voltar" onclick="window.location.href = 'index.html';">Voltar para o Início</button>
+  </div>
+
+  <script src="ex9.js"></script>
+</body>
+</html>

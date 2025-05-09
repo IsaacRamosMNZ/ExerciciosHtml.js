@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteio de Número</title>
+  <style>
+    /* Estilo do corpo e fundo */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6a1b9a, #8e24aa); /* Gradiente de fundo */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    /* Caixa central com sombra */
+    .container {
+      background-color: rgba(52, 152, 219, 0.8);
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+      width: 350px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Inputs e botões com bordas arredondadas e efeito hover */
+    input {
+      padding: 12px;
+      font-size: 18px;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      margin: 10px 0;
+      width: 90%;
+      background-color: #fff;
+      color: #555;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #8e24aa;
+    }
+
+    button {
+      background-color: #8e24aa;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 15px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #6a1b9a;
+    }
+
+    .voltar-btn {
+      background-color: #e74c3c;
+      font-size: 16px;
+    }
+
+    .voltar-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .resultado {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    
+    /* Animação suave para exibir o resultado */
+    .resultado {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Sorteio de Número</h1>
+    <input type="number" id="minimo" placeholder="Valor Mínimo" />
+    <input type="number" id="maximo" placeholder="Valor Máximo" />
+    <button onclick="sortearNumero()">Sortear</button>
+    <div id="resultado" class="resultado"></div>
+    <!-- Botão "Voltar" sem texto adicional -->
+    <button class="voltar-btn" onclick="window.location.href='index.html'">Voltar</button>
+  </div>
+
+  <script>
+    function sortearNumero() {
+      const minimo = document.getElementById('minimo').value;
+      const maximo = document.getElementById('maximo').value;
+
+      // Validação dos valores
+      if (!minimo || !maximo || minimo >= maximo) {
+        alert('Por favor, insira valores válidos para o mínimo e máximo.');
+        return;
+      }
+
+      // Sorteio do número
+      const numeroSorteado = Math.floor(Math.random() * (maximo - minimo + 1)) + parseInt(minimo);
+      document.getElementById('resultado').textContent = `Número sorteado: ${numeroSorteado}`;
+    }
+  </script>
+</body>
+</html>

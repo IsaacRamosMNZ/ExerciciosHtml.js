@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificador de Palíndromo</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #9b59b6, #2980b9);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 400px;
+      max-width: 100%;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #732d91;
+    }
+
+    .feedback {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #e0f7fa;
+    }
+
+    .voltar {
+      margin-top: 20px;
+      background-color: #8e44ad;
+      font-size: 14px;
+    }
+
+    .voltar:hover {
+      background-color: #732d91;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Verificador de Palíndromo</h1>
+    <input type="text" id="palindromoInput" placeholder="Digite uma palavra ou frase" />
+    <button onclick="verificarPalindromo()">Verificar</button>
+    <div id="feedback" class="feedback"></div>
+    <br />
+    <button class="voltar" onclick="window.location.href = 'index.html';">Voltar para o Início</button>
+  </div>
+
+  <script src="ex8.js"></script>
+</body>
+</html>

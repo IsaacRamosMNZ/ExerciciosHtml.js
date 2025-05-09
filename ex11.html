@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Notas e Moedas</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #2980b9, #8e44ad);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      width: 300px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      width: 80%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 80%;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #732d91;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #e0f7fa;
+    }
+
+    .voltar {
+      margin-top: 20px;
+      background-color: #8e44ad;
+      font-size: 14px;
+    }
+
+    .voltar:hover {
+      background-color: #732d91;
+    }
+
+    .nota-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nota-item {
+      font-size: 16px;
+      text-align: center;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de Notas e Moedas</h1>
+    <input type="number" id="valorInput" placeholder="Digite o valor em R$" />
+    
+    <button onclick="calcularNotas()">Calcular Notas e Moedas</button>
+
+    <div id="result" class="result"></div>
+
+    <div id="notaContainer" class="nota-container">
+      <!-- AQUI SERÃO EXIBIDAS AS NOTAS E MOEDAS -->
+    </div>
+
+    <br />
+    <button class="voltar" onclick="window.location.href = 'index.html';">Voltar para o Início</button>
+  </div>
+
+  <script src="ex11.js"></script>
+</body>
+</html>

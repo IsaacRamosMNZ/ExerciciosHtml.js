@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contagem Completa</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #00bcd4, #8e44ad);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 350px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #ff5733;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff3300;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .voltar {
+      margin-top: 15px;
+      background-color: #ff5733;
+      font-size: 14px;
+    }
+
+    .voltar:hover {
+      background-color: #ff3300;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contagem Completa</h1>
+    <input type="number" id="inicio" placeholder="Número inicial" />
+    <input type="number" id="fim" placeholder="Número final" />
+    <input type="number" id="passo" placeholder="Valor do passo" />
+    <button onclick="contar()">Contar</button>
+    <div id="resultado"></div>
+    <br />
+    <button class="voltar" onclick="window.location.href = 'index.html';">Voltar para o Início</button>
+  </div>
+
+  <script src="ex2.js"></script>
+</body>
+</html>

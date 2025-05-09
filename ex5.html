@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificador de Idade</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #9b59b6, #2980b9);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 350px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #732d91;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .voltar {
+      margin-top: 15px;
+      background-color: #8e44ad;
+      font-size: 14px;
+    }
+
+    .voltar:hover {
+      background-color: #732d91;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Verificador de Idade</h1>
+    <input type="number" id="anoNascimento" placeholder="Digite seu ano de nascimento" />
+    <button onclick="verificarIdade()">Verificar Idade</button>
+    <div id="resultado"></div>
+    <br />
+    <button class="voltar" onclick="window.location.href = 'index.html';">Voltar para o Início</button>
+  </div>
+
+  <script src="ex5.js"></script>
+</body>
+</html>

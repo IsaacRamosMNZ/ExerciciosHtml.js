@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Senha com Histórico</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #2980b9, #8e44ad);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      width: 300px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"], input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 80%;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #732d91;
+    }
+
+    .senha-gerada {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #e0f7fa;
+    }
+
+    .copiar-btn, .historico-btn, .voltar-btn {
+      background-color: #27ae60;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .copiar-btn:hover, .historico-btn:hover, .voltar-btn:hover {
+      background-color: #2ecc71;
+    }
+
+    .historico-container {
+      margin-top: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      max-height: 200px;
+      overflow-y: scroll;
+    }
+
+    .historico-item {
+      margin-bottom: 15px;
+      color: #fff;
+      font-size: 16px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Gerador de Senha com Histórico</h1>
+    
+    <label for="tamanho">Tamanho da Senha:</label>
+    <input type="number" id="tamanho" placeholder="Digite o tamanho" min="6" max="20" />
+
+    <label for="uso">Onde será usada?</label>
+    <input type="text" id="uso" placeholder="Nomeie a utilização" />
+
+    <button onclick="gerarSenha()">Gerar Senha</button>
+
+    <button class="voltar-btn" onclick="window.location.href='index.html'">Voltar</button>
+
+    <div id="senhaGerada" class="senha-gerada"></div>
+
+
+    <!-- Botão para copiar a senha gerada -->
+    <button id="copiarBtn" class="copiar-btn" onclick="copiarSenha()" style="display: none;">Copiar Senha</button>
+
+    <!-- Botão para exibir o histórico de senhas geradas -->
+    <button class="historico-btn" onclick="mostrarHistorico()">Histórico de Senhas Geradas</button>
+
+    <!-- Botão "Voltar" -->
+    <button class="voltar-btn" onclick="voltarParaGeracao()" style="display: none;">Voltar para Gerar Senha</button>
+
+    <!-- Área para mostrar o histórico de senhas -->
+    <div id="historico" class="historico-container" style="display: none;"></div>
+  </div>
+
+  <script src="ex13.js"></script>
+</body>
+</html>

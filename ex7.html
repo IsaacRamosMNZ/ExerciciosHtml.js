@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Compras Dinâmica</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #9b59b6, #2980b9);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 400px;
+      max-width: 100%;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 80%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #732d91;
+    }
+
+    .list-container {
+      margin-top: 20px;
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      background-color: #d1c4e9;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      align-items: center;
+      font-size: 18px;
+    }
+
+    .remove-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background-color: #d32f2f;
+    }
+
+    .buy-btn {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background-color: #388e3c;
+    }
+
+    .feedback {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #e0f7fa;
+    }
+
+    .total-container {
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .voltar {
+      margin-top: 20px;
+      background-color: #8e44ad;
+      font-size: 14px;
+    }
+
+    .voltar:hover {
+      background-color: #732d91;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lista de Compras Dinâmica</h1>
+    <input type="text" id="itemInput" placeholder="Digite um item" />
+    <input type="number" id="priceInput" placeholder="Preço do item" step="0.01" />
+    <input type="number" id="quantityInput" placeholder="Quantidade" min="1" />
+    <button onclick="adicionarItem()">Adicionar Item</button>
+    <div id="feedback" class="feedback"></div>
+    <ul id="itemList" class="list-container"></ul>
+
+    <div id="totalContainer" class="total-container">
+      <p>Total: R$ <span id="totalValue">0.00</span></p>
+    </div>
+
+    <br />
+    <button class="voltar" onclick="window.location.href = 'index.html';">Voltar para o Início</button>
+  </div>
+
+  <script src="ex7.js"></script>
+</body>
+</html>

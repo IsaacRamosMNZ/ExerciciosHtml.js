@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronômetro e Relógio</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #2980b9, #8e44ad);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      width: 300px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .time-display {
+      font-size: 40px;
+      margin: 20px;
+      font-weight: bold;
+      color: #f1c40f;
+    }
+
+    .time-display span {
+      margin: 0 10px;
+    }
+
+    button {
+      width: 80%;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #732d91;
+    }
+
+    .relogio {
+      font-size: 24px;
+      margin: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cronômetro</h1>
+    
+    <div class="time-display">
+      <span id="minutos">00</span>:<span id="segundos">00</span>:<span id="milissegundos">00</span>
+    </div>
+
+    <button onclick="iniciarCronometro()">Iniciar</button>
+    <button onclick="pausarCronometro()">Pausar</button>
+    <button onclick="zerarCronometro()">Zerar</button>
+    <button class="voltar-btn" onclick="window.location.href='index.html'">Voltar</button>
+    <div class="relogio">
+      <p id="relogioAtual"></p>
+    </div>
+  </div>
+
+  <script src="cronometro_relogio.js"></script>
+</body>
+</html>
