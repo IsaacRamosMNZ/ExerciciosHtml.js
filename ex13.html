@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerador de Senha com Histórico</title>
-  <style>
-    body {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senhas Aleatórias</title>
+    <style>
+body {
       background: linear-gradient(135deg, #2980b9, #8e44ad);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
@@ -63,64 +63,35 @@
       font-weight: bold;
       color: #e0f7fa;
     }
-
-    .copiar-btn, .historico-btn, .voltar-btn {
-      background-color: #27ae60;
-      font-size: 16px;
-      margin-top: 10px;
-    }
-
-    .copiar-btn:hover, .historico-btn:hover, .voltar-btn:hover {
-      background-color: #2ecc71;
-    }
-
-    .historico-container {
-      margin-top: 20px;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 20px;
-      border-radius: 10px;
-      max-height: 200px;
-      overflow-y: scroll;
-    }
-
-    .historico-item {
-      margin-bottom: 15px;
-      color: #fff;
-      font-size: 16px;
-    }
-
-  </style>
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Gerador de Senha com Histórico</h1>
-    
-    <label for="tamanho">Tamanho da Senha:</label>
-    <input type="number" id="tamanho" placeholder="Digite o tamanho" min="6" max="20" />
-
-    <label for="uso">Onde será usada?</label>
-    <input type="text" id="uso" placeholder="Nomeie a utilização" />
-
-    <button onclick="gerarSenha()">Gerar Senha</button>
-
-    <button class="voltar-btn" onclick="window.location.href='index.html'">Voltar</button>
-
-    <div id="senhaGerada" class="senha-gerada"></div>
-
-
-    <!-- Botão para copiar a senha gerada -->
-    <button id="copiarBtn" class="copiar-btn" onclick="copiarSenha()" style="display: none;">Copiar Senha</button>
-
-    <!-- Botão para exibir o histórico de senhas geradas -->
-    <button class="historico-btn" onclick="mostrarHistorico()">Histórico de Senhas Geradas</button>
-
-    <!-- Botão "Voltar" -->
-    <button class="voltar-btn" onclick="voltarParaGeracao()" style="display: none;">Voltar para Gerar Senha</button>
-
-    <!-- Área para mostrar o histórico de senhas -->
-    <div id="historico" class="historico-container" style="display: none;"></div>
-  </div>
-
-  <script src="ex13.js"></script>
+    <div class="container">
+        <h1>Exercício 13: Gerador de Senhas Aleatórias</h1>
+        <input type="number" id="tamanho" class="input" placeholder="Tamanho da senha" min="4">
+        <button onclick="gerarSenha()" class="btn">Gerar Senha</button>
+        <div id="resultado" class="resultado"></div>
+        <br>
+          <button class="voltar" onclick="window.location.href = 'index.html';">Voltar para o Início</button>
+      </div>
+      
+      <script>
+        function gerarSenha() {
+          let tamanho = parseInt(document.getElementById("tamanho").value);
+          if (isNaN(tamanho) || tamanho < 4) {
+            document.getElementById("resultado").innerText = "A senha precisa ter pelo menos 4 caracteres.";
+            return;
+          }
+      
+          const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+          let senha = "";
+          for (let i = 0; i < tamanho; i++) {
+            senha += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+          }
+      
+          document.getElementById("resultado").innerText = "Senha gerada: " + senha;
+        }
+ 
+    </script>
 </body>
 </html>
