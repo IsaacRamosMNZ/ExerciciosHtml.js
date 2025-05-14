@@ -52,16 +52,3 @@ function zerarCronometro() {
   atualizarCronometro();
 }
 
-// Função para mostrar o relógio atual
-function exibirRelogio() {
-  setInterval(function() {
-    const now = new Date();
-    const horas = formatarTempo(now.getHours());
-    const minutos = formatarTempo(now.getMinutes());
-    const segundos = formatarTempo(now.getSeconds());
-    document.getElementById('relogioAtual').textContent = `Hora Atual: ${horas}:${minutos}:${segundos}`;
-  }, 1000);
-}
-
-// Chama a função para exibir o relógio assim que a página carrega
-exibirRelogio();
